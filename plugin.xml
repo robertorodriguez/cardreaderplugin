@@ -4,4 +4,10 @@
 
     id="ar.com.nigdy.msr.MSR"
     version="1.0.0">
+
+
+  <js-module src="msr.js" name="msr">
+    <runs />
+  </js-module>
+
 </plugin>
