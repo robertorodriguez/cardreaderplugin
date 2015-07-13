@@ -18,7 +18,7 @@
         <param name="android-package" value="ar.com.nigdy.msr.MSR" />
       </feature>
     </config-file>
-    <source-file src="src/android/MSR.java" target-dir="ar/com/nigdy/msr" />
+    <source-file src="src/android/MSR.java" target-dir="src/ar/com/nigdy/msr" />
     <lib-file src="src/android/libs/libmsr.so">
   </platform>
 
