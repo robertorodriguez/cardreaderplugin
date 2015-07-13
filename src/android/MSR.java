@@ -25,7 +25,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 
 import org.json.JSONArray;
-import org.json.JSONEXception;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MSR extends CordovaPlugin {
