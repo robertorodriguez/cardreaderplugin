@@ -136,7 +136,7 @@ public class MSR extends CordovaPlugin {
 
 
        	}
-        public void handleMessage(Message msg) throws JSONException {
+        public void handleMessage(Message msg)  {
             switch (msg.what) {
             case MagneticStripeReader.ON_READ_DATA:
             	ParseData(msg.arg1,(byte [])msg.obj);
