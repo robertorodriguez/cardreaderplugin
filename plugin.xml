@@ -19,7 +19,7 @@
       </feature>
     </config-file>
     <source-file src="src/android/MSR.java" target-dir="src/ar/com/nigdy/msr" />
-    <lib-file src="src/android/libs/libmsr.so">
+    <lib-file src="src/android/libs/libmsr.so" />
   </platform>
 
 
