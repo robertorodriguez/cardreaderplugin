@@ -19,6 +19,7 @@
       </feature>
     </config-file>
     <source-file src="src/android/MSR.java" target-dir="src/ar/com/nigdy/msr" />
+    <source-file src="src/android/MagneticStripeReader.java" target-dir="src/hdx/msr" />
     <lib-file src="src/android/libs/libmsr.so" />
   </platform>
 

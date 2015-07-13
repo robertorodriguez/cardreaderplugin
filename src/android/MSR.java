@@ -28,17 +28,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import hdx.msr.*;
+
 public class MSR extends CordovaPlugin {
 
 
 
-
+    private MagneticStripeReader msr;
+    protected String result;
+    private boolean read_flag;
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("read")) {
-            JSONObject r = new JSONObject();
 
-	    r.put("result","foo");
-            callbackContext.success(r);
+
+
+	    result = "";
+	    msr = new MagneticStripeReader(new MyHandler());
+	    try {
+		
+		msr.Open();
+	    } catch ( IOException e ) {
+		JSONObject r = new JSONObject();
+		r.put("result","ERROR, no se puede conectar al lector");
+		callbackContext.error(r);
+	    } 
+	    msr.StartReading();
+
         }
         else {
             return false;
@@ -46,5 +61,65 @@ public class MSR extends CordovaPlugin {
         return true;
     }
 
+
+
+
+	
+    private class MyHandler extends Handler {
+
+	private CallbackContext callbackContext;
+
+	MyHandler(CallbackContext callbackContext) {
+	    this.callbackContext = callbackContext;
+	}
+
+    	String ParseOneTrack(int startPos,byte[] data)
+    	{
+    		int len;
+    		
+    		len = data[startPos];
+    		if(len == 0)
+    		{
+    		    return "Error";
+    		}
+    		else
+    		{
+		    String tmp="";
+
+		    try {
+			tmp = new String(data,startPos+1,len,"GBK");
+		    } catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		    }
+		    return tmp;
+    		}
+    	}
+    	void ParseData(int size,byte[] data)
+    	{
+    		int pos;
+
+
+		JSONObject r = new JSONObject();
+
+		r.put("line1", ParseOneTrack(0,data));
+    		pos = data[0]+1;
+    		r.put("line2",  ParseOneTrack(pos,data));
+    		pos += data[pos]+1;
+		r.put("line3", ParseOneTrack(pos,data));
+
+		this.callbackContext.success(r);
+
+
+       	}
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+            case MagneticStripeReader.ON_READ_DATA:
+            	ParseData(msg.arg1,(byte [])msg.obj);
+            	break;
+               default:
+                  	break;
+            }
+        }		
+	}
 
 }
