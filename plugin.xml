@@ -6,9 +6,16 @@
     version="1.0.0">
 
     <!-- android -->
-   <source-file src="src/android/MSR.java"
+
+
+   <platform name="android">
+       <lib-file src="src/android/libs/libmsr.so"  />	
+       <source-file src="src/android/MSR.java"
                 target-dir="src/ar/com/nigdy/msr" />
-  <js-module src="www/msr.js" name="msr">
+
+   </platform>
+
+   <js-module src="www/msr.js" name="msr">
     <runs />
   </js-module>
 
