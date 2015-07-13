@@ -7,7 +7,7 @@
 
 
    <js-module src="www/msr.js" name="msr">
-    <clobbers target="Alert" />
+    <clobbers target="MSR" />
   </js-module>
 
 
