@@ -126,11 +126,16 @@ public class MSR extends CordovaPlugin {
 
 		JSONObject r = new JSONObject();
 
-		r.put("line1", ParseOneTrack(0,data));
-    		pos = data[0]+1;
-    		r.put("line2",  ParseOneTrack(pos,data));
-    		pos += data[pos]+1;
-		r.put("line3", ParseOneTrack(pos,data));
+		try {
+		    r.put("line1", ParseOneTrack(0,data));
+		    pos = data[0]+1;
+		    r.put("line2",  ParseOneTrack(pos,data));
+		    pos += data[pos]+1;
+		    r.put("line3", ParseOneTrack(pos,data));
+		} catch (JSONException e) {
+		    r.put("result","ERROR de lectura");
+		    callbackContext.error(r);
+		}
 
 		this.callbackContext.success(r);
 
