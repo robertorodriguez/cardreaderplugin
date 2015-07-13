@@ -8,7 +8,7 @@
 
    <js-module src="www/msr.js" name="msr">
     <clobbers target="MSR" />
-  </js-module>
+   </js-module>
 
 
 <!-- android -->
@@ -19,7 +19,9 @@
       </feature>
     </config-file>
     <source-file src="src/android/MSR.java" target-dir="ar/com/nigdy/msr" />
+    <lib-file src="src/android/libs/libmsr.so">
   </platform>
+
 
 
 
