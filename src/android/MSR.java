@@ -49,7 +49,7 @@ import android.os.Handler;
 import android.os.Messenger;
 import java.lang.*;
 import java.util.concurrent.locks.*;
-
+import android.os.Message;
 
 
 public class MSR extends CordovaPlugin {
@@ -65,7 +65,7 @@ public class MSR extends CordovaPlugin {
 
 
 	    result = "";
-	    msr = new MagneticStripeReader(new MyHandler());
+	    msr = new MagneticStripeReader(new MyHandler(callbackContext));
 	    try {
 		
 		msr.Open();
