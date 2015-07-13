@@ -30,6 +30,28 @@ import org.json.JSONObject;
 
 import hdx.msr.*;
 
+
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+
+import android.util.Log;
+import android.util.TimeUtils;
+
+import java.io.BufferedReader;
+
+import android.os.Handler;
+import android.os.Messenger;
+import java.lang.*;
+import java.util.concurrent.locks.*;
+
+
+
 public class MSR extends CordovaPlugin {
 
 
