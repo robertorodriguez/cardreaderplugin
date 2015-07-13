@@ -119,37 +119,32 @@ public class MSR extends CordovaPlugin {
 		    return tmp;
     		}
     	}
-    	void ParseData(int size,byte[] data) throws JSONException
-    	{
+    	void ParseData(int size,byte[] data) throws JSONException {
     		int pos;
 
 
 		JSONObject r = new JSONObject();
 
-		try {
-		    r.put("line1", ParseOneTrack(0,data));
-		    pos = data[0]+1;
-		    r.put("line2",  ParseOneTrack(pos,data));
-		    pos += data[pos]+1;
-		    r.put("line3", ParseOneTrack(pos,data));
-		} catch (JSONException e) {
-		    r.put("result","ERROR de lectura");
-		    callbackContext.error(r);
-		}
+
+		r.put("line1", ParseOneTrack(0,data));
+		pos = data[0]+1;
+		r.put("line2",  ParseOneTrack(pos,data));
+		pos += data[pos]+1;
+		r.put("line3", ParseOneTrack(pos,data));
 
 		this.callbackContext.success(r);
 
 
        	}
-        public void handleMessage(Message msg) {
+        public void handleMessage(Message msg) throws JSONException {
             switch (msg.what) {
             case MagneticStripeReader.ON_READ_DATA:
             	ParseData(msg.arg1,(byte [])msg.obj);
             	break;
-               default:
-                  	break;
+	    default:
+		break;
             }
         }		
-	}
+    }
 
 }
