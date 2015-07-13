@@ -2,21 +2,26 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
 
-    id="ar.com.nigdy.msr.MSR"
+    id="ar.com.nigdy.msr"
     version="1.0.0">
 
-    <!-- android -->
-
-
-   <platform name="android">
-       <lib-file src="src/android/libs/libmsr.so"  />	
-       <source-file src="src/android/MSR.java"
-                target-dir="src/ar/com/nigdy/msr" />
-
-   </platform>
 
    <js-module src="www/msr.js" name="msr">
-    <runs />
+    <clobbers target="Alert" />
   </js-module>
+
+
+<!-- android -->
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="MSR">
+        <param name="android-package" value="ar.com.nigdy.msr.MSR" />
+      </feature>
+    </config-file>
+    <source-file src="src/android/MSR.java" target-dir="ar/com/nigdy/msr" />
+  </platform>
+
+
+
 
 </plugin>
