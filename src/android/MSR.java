@@ -119,7 +119,7 @@ public class MSR extends CordovaPlugin {
 		    return tmp;
     		}
     	}
-    	void ParseData(int size,byte[] data)
+    	void ParseData(int size,byte[] data) throws JSONException
     	{
     		int pos;
 
