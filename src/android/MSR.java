@@ -75,7 +75,6 @@ public class MSR extends CordovaPlugin {
 	    } catch ( IOException e ) {
 		JSONObject r = new JSONObject();
 		r.put("result","ERROR, no se puede conectar al lector");
-		msr.Close();
 		callbackContext.error(r);
 	    } 
 	    msr.StartReading();
@@ -132,7 +131,6 @@ public class MSR extends CordovaPlugin {
 		r.put("line2",  ParseOneTrack(pos,data));
 		pos += data[pos]+1;
 		r.put("line3", ParseOneTrack(pos,data));
-		msr.Close();
 		this.callbackContext.success(r);
 
 
