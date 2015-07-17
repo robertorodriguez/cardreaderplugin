@@ -131,6 +131,7 @@ public class MSR extends CordovaPlugin {
 		r.put("line2",  ParseOneTrack(pos,data));
 		pos += data[pos]+1;
 		r.put("line3", ParseOneTrack(pos,data));
+		msr.Close();
 		this.callbackContext.success(r);
 
 
